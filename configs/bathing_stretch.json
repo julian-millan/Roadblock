@@ -1,0 +1,28 @@
+{
+    "robot": {
+        "type": "StretchRobot",
+        "model": "StretchSE3"
+    },
+    "head_camera": {
+        "type": "RealSenseCamera",
+        "model": "D435i",
+        "serial_number": TODO,
+        "rotation": "cv2.ROTATE_90_CLOCKWISE"
+    },
+    "wrist_camera": {
+        "type": "RealSenseCamera",
+        "model": "D405",
+        "serial_number": TODO,
+        "exposure": 9000,
+        "gain": 25
+    },
+    "text_to_speech": {
+        "type": "AzureTTSEngine",
+        "key": TODO,
+        "region": TODO,
+    },
+    "VLM": {
+        "type": "ChatGPT",
+        "key": TODO,
+    }
+}

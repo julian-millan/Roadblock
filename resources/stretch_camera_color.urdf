@@ -1,0 +1,202 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<robot name="stretch">
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-0.087526 -0.001626 0.081009" rpy="0.0 0.0 0.0"/>
+      <mass value="17.384389"/>
+      <inertia ixx="0.160002" ixy="0.006758" ixz="0.004621" iyy="0.138068" iyz="0.002208" izz="0.228992"/>
+    </inertial>
+    <visual name="None">
+      <geometry>
+        <mesh filename="./meshes/./meshes/base_link.STL"/>
+      </geometry>
+      <material name=""/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </visual>
+    <collision name="None">
+      <geometry>
+        <mesh filename="./meshes/./meshes/base_link_collision.STL"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_mast">
+    <inertial>
+      <origin xyz="0.000337 0.722201 0.002652" rpy="0.0 0.0 0.0"/>
+      <mass value="1.764017"/>
+      <inertia ixx="0.291286" ixy="0.004149" ixz="-0.000174" iyy="0.001226" iyz="0.000354" izz="0.291429"/>
+    </inertial>
+    <visual name="None">
+      <geometry>
+        <mesh filename="./meshes/./meshes/link_mast.STL"/>
+      </geometry>
+      <material name=""/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </visual>
+    <collision name="None">
+      <geometry>
+        <mesh filename="./meshes/./meshes/link_mast_collision.STL"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_head">
+    <inertial>
+      <origin xyz="0.047462 0.04451 0.016376" rpy="0.0 0.0 0.0"/>
+      <mass value="0.681871"/>
+      <inertia ixx="0.001023" ixy="0.000641" ixz="6.6e-05" iyy="0.002097" iyz="6.5e-05" izz="0.00281"/>
+    </inertial>
+    <visual name="None">
+      <geometry>
+        <mesh filename="./meshes/./meshes/link_head.STL"/>
+      </geometry>
+      <material name=""/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </visual>
+    <collision name="None">
+      <geometry>
+        <mesh filename="./meshes/./meshes/link_head_collision.STL"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_head_pan">
+    <inertial>
+      <origin xyz="-0.000422 0.013934 -0.0161" rpy="0.0 0.0 0.0"/>
+      <mass value="0.062462"/>
+      <inertia ixx="4.1e-05" ixy="-1e-06" ixz="1e-06" iyy="3.2e-05" iyz="-1.5e-05" izz="2.2e-05"/>
+    </inertial>
+    <visual name="None">
+      <geometry>
+        <mesh filename="./meshes/./meshes/link_head_pan.STL"/>
+      </geometry>
+      <material name=""/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </visual>
+    <collision name="None">
+      <geometry>
+        <mesh filename="./meshes/./meshes/link_head_pan_collision.STL"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_head_tilt">
+    <inertial>
+      <origin xyz="0.003907 -0.02418 0.030154" rpy="0.0 0.0 0.0"/>
+      <mass value="0.283548"/>
+      <inertia ixx="0.000316" ixy="-6e-06" ixz="1e-06" iyy="0.000143" iyz="-2e-06" izz="0.00031"/>
+    </inertial>
+    <visual name="None">
+      <geometry>
+        <mesh filename="./meshes/./meshes/link_head_tilt.STL"/>
+      </geometry>
+      <material name=""/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </visual>
+    <collision name="None">
+      <geometry>
+        <mesh filename="./meshes/./meshes/link_head_tilt_collision.STL"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="camera_bottom_screw_frame">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+      <mass value="1.0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  <link name="camera_link">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <mass value="0.072"/>
+      <inertia ixx="0.003881243" ixy="0.0" ixz="0.0" iyy="0.00049894" iyz="0.0" izz="0.003879257"/>
+    </inertial>
+    <visual name="None">
+      <geometry>
+        <mesh filename="./meshes/./meshes/d435.dae"/>
+      </geometry>
+      <origin xyz="0.0043 -0.0175 0.0" rpy="1.5707963267948966 0.0 1.5707963267948966"/>
+    </visual>
+    <collision name="None">
+      <geometry>
+        <box size="0.02505 0.09    0.025  "/>
+      </geometry>
+      <origin xyz="0.0 -0.0175 0.0" rpy="0.0 0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="camera_color_frame">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+      <mass value="1.0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  <link name="camera_color_optical_frame">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+      <mass value="1.0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  <joint name="joint_mast" type="fixed">
+    <parent link="base_link"/>
+    <child link="link_mast"/>
+    <axis xyz="1. 0. 0."/>
+    <origin xyz="-0.06860095235643669 0.12987742365003108 0.021865940981915456" rpy="1.5759171554692506 0.008216318999469951 0.0007901691134519181"/>
+  </joint>
+  <joint name="joint_head" type="fixed">
+    <parent link="link_mast"/>
+    <child link="link_head"/>
+    <axis xyz="1. 0. 0."/>
+    <origin xyz="0.0 1.33 0.0" rpy="-1.5707889803846864 -1.5707963267948966 0.0"/>
+  </joint>
+  <joint name="joint_head_pan" type="revolute">
+    <limit effort="100.0" velocity="1.0" lower="-3.9" upper="1.5"/>
+    <parent link="link_head"/>
+    <child link="link_head_pan"/>
+    <axis xyz="0. 0. 1."/>
+    <origin xyz="0.1334010015124516 0.06912355697249167 -0.01080334681431473" rpy="0.006270786613886041 0.0010785148550200852 1.5840968057000109"/>
+  </joint>
+  <joint name="joint_head_tilt" type="revolute">
+    <limit effort="100.0" velocity="1.0" lower="-1.53" upper="0.79"/>
+    <parent link="link_head_pan"/>
+    <child link="link_head_tilt"/>
+    <axis xyz="0. 0. 1."/>
+    <origin xyz="-0.0026472355409588606 0.026846984370232547 -0.05909978883695027" rpy="1.5574728152008934 -0.030604241329398763 0.0029983066327203284"/>
+  </joint>
+  <joint name="camera_joint" type="fixed">
+    <parent link="link_head_tilt"/>
+    <child link="camera_bottom_screw_frame"/>
+    <axis xyz="1. 0. 0."/>
+    <origin xyz="0.025615878214654032 -0.014499916635682219 0.018363832141059456" rpy="-0.00045613183556494696 0.016943480555277723 -0.006851619915255701"/>
+  </joint>
+  <joint name="camera_link_joint" type="fixed">
+    <parent link="camera_bottom_screw_frame"/>
+    <child link="camera_link"/>
+    <axis xyz="1. 0. 0."/>
+    <origin xyz="0.010600000000000002 0.0175 0.0125" rpy="0.0 0.0 0.0"/>
+  </joint>
+  <joint name="camera_color_joint" type="fixed">
+    <parent link="camera_link"/>
+    <child link="camera_color_frame"/>
+    <axis xyz="1. 0. 0."/>
+    <origin xyz="0.0 0.015 0.0" rpy="0.0 0.0 0.0"/>
+  </joint>
+  <joint name="camera_color_optical_joint" type="fixed">
+    <parent link="camera_color_frame"/>
+    <child link="camera_color_optical_frame"/>
+    <axis xyz="1. 0. 0."/>
+    <origin xyz="0.0 0.0 0.0" rpy="-1.5707963267948966 0.0 -1.5707963267948966"/>
+  </joint>
+  <material name="aluminum">
+    <color rgba="0.5 0.5 0.5 1. "/>
+  </material>
+  <material name="plastic">
+    <color rgba="0.1 0.1 0.1 1. "/>
+  </material>
+  <material name="">
+    <color rgba="0.79216 0.81961 0.93333 1.     "/>
+  </material>
+</robot>

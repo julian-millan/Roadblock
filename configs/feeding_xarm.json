@@ -1,0 +1,30 @@
+{
+    "robot": {
+        "type": "XArmRobot",
+        "model": "xarm7",
+        "IP": TODO,
+        "tcp_transform": TODO,
+    },
+    "head_camera": {
+        "type": "ZedMiniCamera",
+        "model": "ZEDMini",
+        "rotation": "cv2.ROTATE_180"
+    },
+    "wrist_camera": {
+        "type": "RealSenseCamera",
+        "model": "D405",
+        "serial_number": TODO,
+        "exposure": 9000,
+        "gain": 25
+    },
+    "text_to_speech": {
+        "type": "AzureTTSEngine",
+        "key": TODO,
+        "region": TODO,
+    },
+    "VLM": {
+        "type": "ChatGPT",
+        "key": TODO,
+    }
+    "transform": TODO,
+}
