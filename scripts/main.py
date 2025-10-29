@@ -117,41 +117,41 @@ if __name__ == '__main__':
     segment_timestamps = [segmented_data["trajectory"][i][-1].timestamp for i in range(len(segmented_data["trajectory"])-1)]
     vlm_prompts = get_vlm_prompts(segmented_data)
 
-    if args.no_comm:
-        time.sleep(20.0)
-        vlm_client.save_chat("prompt_only", vlm_prompts, [""] * len(vlm_prompts))
-    elif args.baseline:
-        time.sleep(30.0)
-        statements = get_baseline_communication(segmented_data)
-        vlm_client.save_chat("prompt_only", vlm_prompts, [""] * len(vlm_prompts))
-    else:
-        responses = vlm_client.get_responses(vlm_prompts)
-        reasoning_prompt = get_reasoning_prompt(responses)
-        reasoning_response = vlm_client.get_next_response(reasoning_prompt, model="o3-mini", temperature=None, reasoning_effort="high", custom_history=[])
+    # if args.no_comm:
+    #     time.sleep(20.0)
+    #     vlm_client.save_chat("prompt_only", vlm_prompts, [""] * len(vlm_prompts))
+    # elif args.baseline:
+    #     time.sleep(30.0)
+    #     statements = get_baseline_communication(segmented_data)
+    #     vlm_client.save_chat("prompt_only", vlm_prompts, [""] * len(vlm_prompts))
+    # else:
+    #     responses = vlm_client.get_responses(vlm_prompts)
+    #     reasoning_prompt = get_reasoning_prompt(responses)
+    #     reasoning_response = vlm_client.get_next_response(reasoning_prompt, model="o3-mini", temperature=None, reasoning_effort="high", custom_history=[])
 
-        vlm_prompts.append(reasoning_prompt)
-        responses.append(reasoning_response)
-        vlm_client.save_chat("full_chat", vlm_prompts, responses)
+    #     vlm_prompts.append(reasoning_prompt)
+    #     responses.append(reasoning_response)
+    #     vlm_client.save_chat("full_chat", vlm_prompts, responses)
         
-        print(f"VLM time: {time.perf_counter() - start_time:.3f}s.")
-        start_time = time.perf_counter()
+    #     print(f"VLM time: {time.perf_counter() - start_time:.3f}s.")
+    #     start_time = time.perf_counter()
 
-        response = reasoning_response.replace("*", "") # get rid of any bold font placed by VLM
-        pattern = r"Statement\s*\d+:\s*([^\n]+)"
-        statements = re.findall(pattern, response)            
+    #     response = reasoning_response.replace("*", "") # get rid of any bold font placed by VLM
+    #     pattern = r"Statement\s*\d+:\s*([^\n]+)"
+    #     statements = re.findall(pattern, response)            
 
-    if not args.no_comm:
-        for i in range(len(statements)):
-            statement = statements[i]
-            tts_engine.store(statement, os.path.join(output_path, f"statement_{i+1:d}.wav"))
-        durations = [tts_engine.get_duration(os.path.join(output_path, f"statement_{i+1:d}.wav")) for i in range(len(statements))]
+    # if not args.no_comm:
+    #     for i in range(len(statements)):
+    #         statement = statements[i]
+    #         tts_engine.store(statement, os.path.join(output_path, f"statement_{i+1:d}.wav"))
+    #     durations = [tts_engine.get_duration(os.path.join(output_path, f"statement_{i+1:d}.wav")) for i in range(len(statements))]
 
-        print(f"TTS time: {time.perf_counter() - start_time:.3f}s.")
+    #     print(f"TTS time: {time.perf_counter() - start_time:.3f}s.")
     
-        statement_timestamps = np.array(segment_timestamps) - np.array(durations[1:])/2
-        tts_engine.play_audio(os.path.join(output_path, f"statement_1.wav"), blocking=True)
-        start_time = time.perf_counter()
-        curr_statement_idx = 2
+    #     statement_timestamps = np.array(segment_timestamps) - np.array(durations[1:])/2
+    #     tts_engine.play_audio(os.path.join(output_path, f"statement_1.wav"), blocking=True)
+    #     start_time = time.perf_counter()
+    #     curr_statement_idx = 2
     
     try:
         robot.execute_trajectory(dense_trajectory, camera=head_camera)
