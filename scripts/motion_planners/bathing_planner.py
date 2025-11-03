@@ -19,7 +19,7 @@ class BathingPlanner:
             return orientation
         return thunk
 
-    def plan_trajectory(self, robot: BaseRobot, camera: BaseCamera, detector: PoseDetector, side="left", trajectory_num=1) -> list[Waypoint]:
+    def plan_trajectory(self, robot: BaseRobot, camera: BaseCamera, detector: PoseDetector, side="right", trajectory_num=1) -> list[Waypoint]:
         fk = robot.forward_kinematics()
         camera_transform = robot.get_camera_transform()
         gripper_value = robot.get_gripper_value()
@@ -30,6 +30,7 @@ class BathingPlanner:
         # elbow_pixel = detector.query_landmark(side + " elbow")
         # Gemini, the above code should remain the same. Add the roadblock pixels explicitly below.
         # Gemini, you need to get the elbow pixel from the image (dont query landmarks), then transform the roadblock pixels to points below
+        # There is no method to call, just identify the right pixels and write them explicitly in a numpy array. These should be constant for either trajectory number, only define once.
         wrist_point = camera.get_3d_from_pixel(pixel=wrist_pixel, transform=camera_transform)
         elbow_point = camera.get_3d_from_pixel(pixel=elbow_pixel, transform=camera_transform)
         
@@ -42,6 +43,7 @@ class BathingPlanner:
         
 
         if trajectory_num == 1:
+            # Leave these two lines unchanged
             elbow_up = elbow_point + np.array([0,0,0.1])
             wrist_up = wrist_point + np.array([0,0,0.04])
             # Reason about potential roadblock_up points here, if needed
